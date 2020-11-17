@@ -26,11 +26,6 @@ public class ClienteServiceImpl implements ClienteService{
 
 	@Override
 	public List<ClienteDTO> consultarCliente() {
-
-//		ClienteDTO dto = new ClienteDTO();
-//		dto.setId(1);
-//		dto.setNome("Victor Laranjeira de Oliveira");
-//		dto.setIdade(21);
 		
 		List<ClienteDTO> dtoList = new ArrayList<>();
 		

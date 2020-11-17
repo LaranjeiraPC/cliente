@@ -1,7 +1,5 @@
 package com.glass.client.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,25 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cliente")
-public class Cliente implements Serializable{
+@Table(name="usuario")
+public class Usuario {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5690596113108070199L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "nome")
-	private String nome;
+	private String usuario;
 	
-	@Column(name = "idade")
-	private Integer idade;
+	@Column(name = "senha")
+	private String senha;
 	
-	public Cliente() {}
+	public Usuario() {}
 
 	public Integer getId() {
 		return id;
@@ -38,20 +31,21 @@ public class Cliente implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
-	public Integer getIdade() {
-		return idade;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setIdade(Integer idade) {
-		this.idade = idade;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
-
+	
+	
 }

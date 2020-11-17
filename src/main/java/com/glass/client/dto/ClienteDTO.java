@@ -12,7 +12,7 @@ public class ClienteDTO implements Serializable{
 	private static final long serialVersionUID = -3842684212926762881L;
 	private Integer id;
 	private String nome;
-	private String idade;
+	private Integer idade;
 	
 	public ClienteDTO() {}
 	
@@ -38,11 +38,11 @@ public class ClienteDTO implements Serializable{
 		this.nome = nome;
 	}
 
-	public String getIdade() {
+	public Integer getIdade() {
 		return idade;
 	}
 
-	public void setIdade(String idade) {
+	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
 	
