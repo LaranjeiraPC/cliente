@@ -12,6 +12,8 @@ import com.glass.client.dto.ClienteDTO;
 import com.glass.client.model.Cliente;
 import com.glass.client.repository.ClienteRepository;
 import com.glass.client.service.ClienteService;
+import com.glass.client.util.Response;
+import com.glass.client.util.enums.MessageEnum;
 
 @Service
 @Transactional
@@ -20,8 +22,6 @@ public class ClienteServiceImpl implements ClienteService{
 	@Autowired
 	public ClienteRepository repository;
 	
-	private static final String OK = "Registro Atualizado";
-	private static final String ERROR = "Error ao atualizar registro";
 	
 	public ClienteServiceImpl(ClienteRepository repository) {
 		this.repository = repository;
@@ -45,25 +45,25 @@ public class ClienteServiceImpl implements ClienteService{
 	}
 
 	@Override
-	public String update(Integer id, ClienteDTO dto) {
+	public Response update(Integer id, ClienteDTO dto) {
+		
 		Cliente cliente = repository.consultarPorId(id);
 		
-		String status = "";
+		Response response = new Response();
 		
-		if(cliente != null) {
-			cliente.setNome(dto.getNome());
-			cliente.setIdade(dto.getIdade());
-			
-			try {
-				repository.save(cliente);
-				status = OK;
-			}catch(Exception e){
-				status = ERROR;
-			}
-			
+		cliente.setNome(dto.getNome());
+		cliente.setIdade(dto.getIdade());
+		
+		try {
+			repository.save(cliente);
+			response.setMessage("Registro salvo com sucesso!");
+			response.setStatus(MessageEnum.SUCESSO.toString());
+		}catch(Exception e){
+			response.setMessage("Erro ao salvar registro!");
+			response.setStatus(MessageEnum.ERROR.toString());
 		}
-		
-		return status;
+				
+		return response;
 	}
 
 }

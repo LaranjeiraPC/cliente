@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.glass.client.dto.ClienteDTO;
 import com.glass.client.model.Cliente;
+import com.glass.client.util.Response;
 
 public interface ClienteService {
 	
@@ -11,6 +12,6 @@ public interface ClienteService {
 	
 	public Cliente consultarId(Integer id);
 	
-	public String update(Integer id, ClienteDTO dto);
+	public Response update(Integer id, ClienteDTO dto);
 
 }

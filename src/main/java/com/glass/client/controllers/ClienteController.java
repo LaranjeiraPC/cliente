@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.glass.client.dto.ClienteDTO;
 import com.glass.client.model.Cliente;
 import com.glass.client.service.ClienteService;
+import com.glass.client.util.Response;
 
 @RestController
 @RequestMapping("/api/cliente")
@@ -48,14 +49,18 @@ public class ClienteController {
 	
 	@CrossOrigin
 	@PutMapping("/{id}")
-	public ResponseEntity<String> update (
+	public ResponseEntity<Response> update (
 			@PathVariable(name = "id") Integer id, 
 			@RequestBody ClienteDTO dto) {
+		
+		Response response = new Response();
+		
 		try {
-			return ResponseEntity.ok(clienteService.update(id, dto));
+			response = clienteService.update(id, dto);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}		
+		return ResponseEntity.ok(response);	
 	}
 
 }
