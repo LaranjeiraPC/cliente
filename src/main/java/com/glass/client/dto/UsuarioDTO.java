@@ -19,7 +19,6 @@ public class UsuarioDTO implements Serializable{
 	public UsuarioDTO(Usuario usuario) {
 		this.id = usuario.getId();
 		this.usuario = usuario.getUsuario();
-		this.senha = usuario.getSenha();
 	}
 	
 	public Integer getId() {

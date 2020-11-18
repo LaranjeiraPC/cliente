@@ -20,6 +20,9 @@ public class ClienteServiceImpl implements ClienteService{
 	@Autowired
 	public ClienteRepository repository;
 	
+	private static final String OK = "Registro Atualizado";
+	private static final String ERROR = "Error ao atualizar registro";
+	
 	public ClienteServiceImpl(ClienteRepository repository) {
 		this.repository = repository;
 	}
@@ -34,6 +37,33 @@ public class ClienteServiceImpl implements ClienteService{
 		cliente.forEach(c -> dtoList.add(new ClienteDTO(c)));
 		
 		return dtoList;
+	}
+
+	@Override
+	public Cliente consultarId(Integer id) {
+		return repository.consultarPorId(id);
+	}
+
+	@Override
+	public String update(Integer id, ClienteDTO dto) {
+		Cliente cliente = repository.consultarPorId(id);
+		
+		String status = "";
+		
+		if(cliente != null) {
+			cliente.setNome(dto.getNome());
+			cliente.setIdade(dto.getIdade());
+			
+			try {
+				repository.save(cliente);
+				status = OK;
+			}catch(Exception e){
+				status = ERROR;
+			}
+			
+		}
+		
+		return status;
 	}
 
 }
