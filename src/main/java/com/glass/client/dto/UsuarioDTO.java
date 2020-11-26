@@ -13,12 +13,16 @@ public class UsuarioDTO implements Serializable{
 	private Integer id;
 	private String usuario;
 	private String senha;
+	private String permissao;
+	private byte[] image; 
 	
 	public UsuarioDTO() {}
 	
 	public UsuarioDTO(Usuario usuario) {
-		this.id = usuario.getId();
+		this.id = usuario.getId_usuario();
 		this.usuario = usuario.getUsuario();
+		this.permissao = usuario.getPermissao();
+		this.image = usuario.getImage();
 	}
 	
 	public Integer getId() {
@@ -39,4 +43,21 @@ public class UsuarioDTO implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public String getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(String permissao) {
+		this.permissao = permissao;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
 }
